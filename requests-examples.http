@@ -1,0 +1,64 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api
+
+# получение объявлений
+GET {{baseUrl}}/advertisements/
+Content-Type: application/json
+Authorization: Token 4942f9aabe6eeebf55afda4fca6bbfb5a537060e
+
+###
+
+# добавление в избранное
+GET {{baseUrl}}/advertisements/8/favorite
+Content-Type: application/json
+Authorization: Token 4942f9aabe6eeebf55afda4fca6bbfb5a537060e
+
+###
+
+# получение избранного
+GET {{baseUrl}}/advertisements/favorites
+Content-Type: application/json
+Authorization: Token 4942f9aabe6eeebf55afda4fca6bbfb5a537060e
+
+###
+
+# создание объявления
+POST {{baseUrl}}/advertisements/
+Content-Type: application/json
+Authorization: Token 55337427dc709978b2638cdbd39e69f03eda0d82
+
+{
+  "title": "Люстра",
+  "description": "Стиль Сканди, дерево/стекло. 6 рожков, Е14"
+}
+
+###
+
+# попытка поменять объявление
+PATCH {{baseUrl}}/advertisements/9/
+Content-Type: application/json
+Authorization: Token 66d286037bcfb0f3b56ddb58562981d9cb935087
+
+{
+  "draft": "FALSE"
+}
+
+###
+
+# фильтрация по создателю
+GET {{baseUrl}}/advertisements/?creator=3
+Content-Type: application/json
+
+###
+
+# фильтрация по дате
+GET {{baseUrl}}/advertisements/?created_at_before=2023-05-01
+Content-Type: application/json
+
+###
+
+# попытка удалить объявление
+DELETE {{baseUrl}}/advertisements/8/
+Content-Type: application/json
+Authorization: Token 66d286037bcfb0f3b56ddb58562981d9cb935087
